@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class TexteDao {
+public class Texte {
 
 
     @Id
@@ -15,11 +15,11 @@ public class TexteDao {
     private String text;
     private String bemerkung;
 
-    public TexteDao() {
+    public Texte() {
     }
 
 
-    public TexteDao(int id, String text, String bemerkung) {
+    public Texte(int id, String text, String bemerkung) {
         this.id = id;
         this.text = text;
         this.bemerkung = bemerkung;
@@ -56,7 +56,7 @@ public class TexteDao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TexteDao texteDao = (TexteDao) o;
+        Texte texteDao = (Texte) o;
 
         return id == texteDao.id;
     }

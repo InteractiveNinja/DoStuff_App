@@ -5,26 +5,26 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity
-public class TaskDao {
+public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String beschreibung;
     private String zuerledigen;
-    private int tasked_id;
-    private int wiederholungs_id;
+    private int tasker_id;
+    private int wiederholungen_id;
     private int erledigt;
 
-    public TaskDao() {
+    public Task() {
     }
 
-    public TaskDao(int id, String beschreibung, String zuerledigen, int tasked_id, int wiederholungs_id, int erledigt) {
+    public Task(int id, String beschreibung, String zuerledigen, int tasker_id, int wiederholungen_id, int erledigt) {
         this.id = id;
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
-        this.tasked_id = tasked_id;
-        this.wiederholungs_id = wiederholungs_id;
+        this.tasker_id = tasker_id;
+        this.wiederholungen_id = wiederholungen_id;
         this.erledigt = erledigt;
     }
 
@@ -52,20 +52,20 @@ public class TaskDao {
         this.zuerledigen = zuerledigen;
     }
 
-    public int getTasked_id() {
-        return tasked_id;
+    public int getTasker_id() {
+        return tasker_id;
     }
 
-    public void setTasked_id(int tasked_id) {
-        this.tasked_id = tasked_id;
+    public void setTasker_id(int tasker_id) {
+        this.tasker_id = tasker_id;
     }
 
-    public int getWiederholungs_id() {
-        return wiederholungs_id;
+    public int getWiederholungen_id() {
+        return wiederholungen_id;
     }
 
-    public void setWiederholungs_id(int wiederholungs_id) {
-        this.wiederholungs_id = wiederholungs_id;
+    public void setWiederholungen_id(int wiederholungen_id) {
+        this.wiederholungen_id = wiederholungen_id;
     }
 
     public int getErledigt() {
@@ -82,7 +82,7 @@ public class TaskDao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaskDao taskDao = (TaskDao) o;
+        Task taskDao = (Task) o;
 
         return id == taskDao.id;
     }
@@ -98,8 +98,8 @@ public class TaskDao {
                 "id=" + id +
                 ", beschreibung='" + beschreibung + '\'' +
                 ", zuerledigen='" + zuerledigen + '\'' +
-                ", tasked_id=" + tasked_id +
-                ", wiederholungs_id=" + wiederholungs_id +
+                ", tasked_id=" + tasker_id +
+                ", wiederholungs_id=" + wiederholungen_id +
                 ", erledigt=" + erledigt +
                 '}';
     }

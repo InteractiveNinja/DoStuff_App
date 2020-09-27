@@ -3,7 +3,7 @@ package eu.imninja.dostuffweb.DAO;
 import javax.persistence.*;
 
 @Entity
-public class TaskerDao {
+public class Tasker {
 
 
     @Id
@@ -11,10 +11,10 @@ public class TaskerDao {
     private int id;
     private String name;
 
-    public TaskerDao() {
+    public Tasker() {
     }
 
-    public TaskerDao(int id, String name, String geburtstag) {
+    public Tasker(int id, String name, String geburtstag) {
         this.id = id;
         this.name = name;
         this.geburtstag = geburtstag;
@@ -51,9 +51,9 @@ public class TaskerDao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaskerDao taskerDao = (TaskerDao) o;
+        Tasker tasker = (Tasker) o;
 
-        return id == taskerDao.id;
+        return id == tasker.id;
     }
 
     @Override

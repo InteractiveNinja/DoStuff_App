@@ -39,6 +39,18 @@
         <div class="container">
           <h1 class="display-4 center">Hallo</h1>
           <p class="lead">Wilkommen in der Web App, klicke auf die oberen Links um Task zu planen,verteilen oder zu bearbeiten.</p>
+            <h1 class="display-7 center">Zurzeit laufenden Tasks</h1>
+            <table>
+                <th:block th:each="task : ${tasks}">
+                <tr>
+                    <td th:text="${task.beschreibung}"></td>
+                    <td th:text="${task.zuerledigen}"></td>
+                    <td th:text="${task.erledigt}"></td>
+                    <td th:text="${task.tasker_id}"></td>
+                </tr>
+            </th:block>
+            </table>
+
         </div>
       </div>
 

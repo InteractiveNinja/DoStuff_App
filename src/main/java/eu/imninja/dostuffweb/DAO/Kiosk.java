@@ -3,21 +3,21 @@ package eu.imninja.dostuffweb.DAO;
 import javax.persistence.*;
 
 @Entity
-public class WiederholungenDao {
+public class Kiosk {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private String ip;
+    private String hostname;
 
-    private String name;
-
-
-    public WiederholungenDao() {
+    public Kiosk() {
     }
 
-    public WiederholungenDao(int id, String name) {
+    public Kiosk(int id, String ip, String hostname) {
         this.id = id;
-        this.name = name;
+        this.ip = ip;
+        this.hostname = hostname;
     }
 
     public int getId() {
@@ -28,12 +28,20 @@ public class WiederholungenDao {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getIp() {
+        return ip;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getHostname() {
+        return hostname;
+    }
+
+    public void setHostname(String hostname) {
+        this.hostname = hostname;
     }
 
     @Override
@@ -41,9 +49,9 @@ public class WiederholungenDao {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        WiederholungenDao that = (WiederholungenDao) o;
+        Kiosk kiosk = (Kiosk) o;
 
-        return id == that.id;
+        return id == kiosk.id;
     }
 
     @Override
@@ -53,9 +61,10 @@ public class WiederholungenDao {
 
     @Override
     public String toString() {
-        return "Wiederholungen{" +
+        return "KioskDao{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", ip='" + ip + '\'' +
+                ", hostname='" + hostname + '\'' +
                 '}';
     }
 }
