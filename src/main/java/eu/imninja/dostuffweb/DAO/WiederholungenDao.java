@@ -3,22 +3,22 @@ package eu.imninja.dostuffweb.DAO;
 import javax.persistence.*;
 
 @Entity
-public class TaskerDao {
-
+public class WiederholungenDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @OneToMany
     private int id;
+
     private String name;
 
-    public TaskerDao() {
+
+    public WiederholungenDao() {
     }
 
-    public TaskerDao(int id, String name, String geburtstag) {
+    public WiederholungenDao(int id, String name) {
         this.id = id;
         this.name = name;
-        this.geburtstag = geburtstag;
     }
 
     public int getId() {
@@ -37,24 +37,14 @@ public class TaskerDao {
         this.name = name;
     }
 
-    public String getGeburtstag() {
-        return geburtstag;
-    }
-
-    public void setGeburtstag(String geburtstag) {
-        this.geburtstag = geburtstag;
-    }
-
-    private String geburtstag;
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        TaskerDao taskerDao = (TaskerDao) o;
+        WiederholungenDao that = (WiederholungenDao) o;
 
-        return id == taskerDao.id;
+        return id == that.id;
     }
 
     @Override
@@ -64,10 +54,9 @@ public class TaskerDao {
 
     @Override
     public String toString() {
-        return "TaskerDao{" +
+        return "Wiederholungen{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", geburtstag='" + geburtstag + '\'' +
                 '}';
     }
 }

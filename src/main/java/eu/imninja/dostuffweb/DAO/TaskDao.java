@@ -1,6 +1,14 @@
 package eu.imninja.dostuffweb.DAO;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+@Entity
 public class TaskDao {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String beschreibung;
     private String zuerledigen;
@@ -66,5 +74,33 @@ public class TaskDao {
 
     public void setErledigt(int erledigt) {
         this.erledigt = erledigt;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        TaskDao taskDao = (TaskDao) o;
+
+        return id == taskDao.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskDao{" +
+                "id=" + id +
+                ", beschreibung='" + beschreibung + '\'' +
+                ", zuerledigen='" + zuerledigen + '\'' +
+                ", tasked_id=" + tasked_id +
+                ", wiederholungs_id=" + wiederholungs_id +
+                ", erledigt=" + erledigt +
+                '}';
     }
 }
