@@ -7,7 +7,6 @@ public class WiederholungenDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany
     private int id;
 
     private String name;

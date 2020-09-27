@@ -8,7 +8,6 @@ public class TaskerDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToMany
     private int id;
     private String name;
 
