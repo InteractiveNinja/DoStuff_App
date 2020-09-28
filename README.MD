@@ -13,8 +13,8 @@
 ### Home
 
 Features:
-* Anzeigen der aktuellen Uhrzeit und das Wetter
-* Anzeigen heutiger Aufgaben :ok_hand:
+* Anzeigen der aktuellen Uhrzeit :ok_hand: und das Wetter
+* Anzeigen ~~heutiger~~ aller Aufgaben :ok_hand:
 * Begrüssen des Nutzers :ok_hand:
 
 ### Planen
