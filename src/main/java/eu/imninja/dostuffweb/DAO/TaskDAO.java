@@ -22,13 +22,13 @@ public class TaskDAO {
     @ManyToOne
     @JoinColumn(name = "wiederholungen_id")
     private WiederholungenDAO wiederholungen_id;
-    @Column(name = "Erledigt",length=1,nullable = false)
-    private int erledigt;
+    @Column(name = "Erledigt",nullable = false)
+    private boolean erledigt;
 
     public TaskDAO() {
     }
 
-    public TaskDAO(int id, String beschreibung, Date zuerledigen, TaskerDAO tasker_id, WiederholungenDAO wiederholungen_id, int erledigt) {
+    public TaskDAO(int id, String beschreibung, Date zuerledigen, TaskerDAO tasker_id, WiederholungenDAO wiederholungen_id, boolean erledigt) {
         this.id = id;
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
@@ -77,11 +77,11 @@ public class TaskDAO {
         this.wiederholungen_id = wiederholungen_id;
     }
 
-    public int getErledigt() {
+    public boolean isErledigt() {
         return erledigt;
     }
 
-    public void setErledigt(int erledigt) {
+    public void setErledigt(boolean erledigt) {
         this.erledigt = erledigt;
     }
 }
