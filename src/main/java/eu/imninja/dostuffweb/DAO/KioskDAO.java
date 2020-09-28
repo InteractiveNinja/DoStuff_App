@@ -2,15 +2,16 @@ package eu.imninja.dostuffweb.DAO;
 
 import javax.persistence.*;
 
-@Entity(name = "kiosk")
+@Entity
+@Table(name = "kiosk")
 public class KioskDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column(name = "IP",length="13",nullable = false)
+    @Column(name = "IP",length=13,nullable = false)
     private String ip;
-    @Column(name = "Hostname",length="50",nullable = false)
+    @Column(name = "Hostname",length=50,nullable = false)
     private String hostname;
 
     public KioskDAO() {

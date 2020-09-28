@@ -2,28 +2,33 @@ package eu.imninja.dostuffweb.DAO;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-@Entity(name = "task")
+@Entity
+@Table(name = "task")
 public class TaskDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column(name = "Beschreibung",length="50",nullable = false)
+    @Column(name = "Beschreibung",length=50,nullable = false)
     private String beschreibung;
     @Column(name = "Zuerledigen",nullable = false)
     private Date zuerledigen;
-    @OneToMany(mappedBy = "task")
-    private int tasker_id;
-    @OneToMany(mappedBy = "task")
-    private int wiederholungen_id;
-    @Column(name = "Erledigt",length="1",nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "tasker_id")
+    private TaskerDAO tasker_id;
+    @ManyToOne
+    @JoinColumn(name = "wiederholungen_id")
+    private WiederholungenDAO wiederholungen_id;
+    @Column(name = "Erledigt",length=1,nullable = false)
     private int erledigt;
 
     public TaskDAO() {
     }
 
-    public TaskDAO(int id, String beschreibung, Date zuerledigen, int tasker_id, int wiederholungen_id, int erledigt) {
+    public TaskDAO(int id, String beschreibung, Date zuerledigen, TaskerDAO tasker_id, WiederholungenDAO wiederholungen_id, int erledigt) {
         this.id = id;
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
@@ -56,19 +61,19 @@ public class TaskDAO {
         this.zuerledigen = zuerledigen;
     }
 
-    public int getTasker_id() {
+    public TaskerDAO getTasker_id() {
         return tasker_id;
     }
 
-    public void setTasker_id(int tasker_id) {
+    public void setTasker_id(TaskerDAO tasker_id) {
         this.tasker_id = tasker_id;
     }
 
-    public int getWiederholungen_id() {
+    public WiederholungenDAO getWiederholungen_id() {
         return wiederholungen_id;
     }
 
-    public void setWiederholungen_id(int wiederholungen_id) {
+    public void setWiederholungen_id(WiederholungenDAO wiederholungen_id) {
         this.wiederholungen_id = wiederholungen_id;
     }
 

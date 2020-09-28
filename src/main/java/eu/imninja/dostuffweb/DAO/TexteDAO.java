@@ -2,16 +2,17 @@ package eu.imninja.dostuffweb.DAO;
 
 import javax.persistence.*;
 
-@Entity(name="texte")
+@Entity
+@Table(name = "texte")
 public class TexteDAO {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column(name = "Text",length="50",nullable = false)
+    @Column(name = "Text",length=50,nullable = false)
     private String text;
-    @Column(name = "Bemerkung",length="60",nullable = false)
+    @Column(name = "Bemerkung",length=60,nullable = false)
     private String bemerkung;
 
 
