@@ -1,25 +1,29 @@
 package eu.imninja.dostuffweb.DAO;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Entity
-public class Task {
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity(name = "task")
+public class TaskDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "Beschreibung",length="50",nullable = false)
     private String beschreibung;
-    private String zuerledigen;
+    @Column(name = "Zuerledigen",nullable = false)
+    private Date zuerledigen;
+    @OneToMany(mappedBy = "task")
     private int tasker_id;
+    @OneToMany(mappedBy = "task")
     private int wiederholungen_id;
+    @Column(name = "Erledigt",length="1",nullable = false)
     private int erledigt;
 
-    public Task() {
+    public TaskDAO() {
     }
 
-    public Task(int id, String beschreibung, String zuerledigen, int tasker_id, int wiederholungen_id, int erledigt) {
+    public TaskDAO(int id, String beschreibung, Date zuerledigen, int tasker_id, int wiederholungen_id, int erledigt) {
         this.id = id;
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
@@ -44,11 +48,11 @@ public class Task {
         this.beschreibung = beschreibung;
     }
 
-    public String getZuerledigen() {
+    public Date getZuerledigen() {
         return zuerledigen;
     }
 
-    public void setZuerledigen(String zuerledigen) {
+    public void setZuerledigen(Date zuerledigen) {
         this.zuerledigen = zuerledigen;
     }
 
@@ -74,33 +78,5 @@ public class Task {
 
     public void setErledigt(int erledigt) {
         this.erledigt = erledigt;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Task taskDao = (Task) o;
-
-        return id == taskDao.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return "TaskDao{" +
-                "id=" + id +
-                ", beschreibung='" + beschreibung + '\'' +
-                ", zuerledigen='" + zuerledigen + '\'' +
-                ", tasked_id=" + tasker_id +
-                ", wiederholungs_id=" + wiederholungen_id +
-                ", erledigt=" + erledigt +
-                '}';
     }
 }

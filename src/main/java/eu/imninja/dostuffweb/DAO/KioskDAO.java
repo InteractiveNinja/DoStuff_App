@@ -2,19 +2,21 @@ package eu.imninja.dostuffweb.DAO;
 
 import javax.persistence.*;
 
-@Entity
-public class Kiosk {
+@Entity(name = "kiosk")
+public class KioskDAO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "IP",length="13",nullable = false)
     private String ip;
+    @Column(name = "Hostname",length="50",nullable = false)
     private String hostname;
 
-    public Kiosk() {
+    public KioskDAO() {
     }
 
-    public Kiosk(int id, String ip, String hostname) {
+    public KioskDAO(int id, String ip, String hostname) {
         this.id = id;
         this.ip = ip;
         this.hostname = hostname;
@@ -42,29 +44,5 @@ public class Kiosk {
 
     public void setHostname(String hostname) {
         this.hostname = hostname;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Kiosk kiosk = (Kiosk) o;
-
-        return id == kiosk.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return "KioskDao{" +
-                "id=" + id +
-                ", ip='" + ip + '\'' +
-                ", hostname='" + hostname + '\'' +
-                '}';
     }
 }

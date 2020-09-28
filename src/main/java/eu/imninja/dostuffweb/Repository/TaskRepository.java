@@ -1,7 +1,7 @@
 package eu.imninja.dostuffweb.Repository;
 
-import eu.imninja.dostuffweb.DAO.Task;
+import eu.imninja.dostuffweb.DAO.TaskDAO;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TaskRepository extends CrudRepository<Task, Integer> {
+public interface TaskRepository extends CrudRepository<TaskDAO, Integer> {
 }

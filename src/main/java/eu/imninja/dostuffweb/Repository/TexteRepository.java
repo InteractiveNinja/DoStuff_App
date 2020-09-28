@@ -1,7 +1,7 @@
 package eu.imninja.dostuffweb.Repository;
 
-import eu.imninja.dostuffweb.DAO.Texte;
+import eu.imninja.dostuffweb.DAO.TexteDAO;
 import org.springframework.data.repository.CrudRepository;
 
-public interface TexteRepository extends CrudRepository<Texte,Integer> {
+public interface TexteRepository extends CrudRepository<TexteDAO,Integer> {
 }

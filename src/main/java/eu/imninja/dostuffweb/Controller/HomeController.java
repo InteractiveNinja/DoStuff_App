@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     @Autowired
     TaskRepository taskRepository;
-    @Autowired
-    TaskerRepository taskerRepository;
 
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("tasks",taskRepository.findAll());
-        model.addAttribute("taskers",taskerRepository.findAll());
         return "home";
     }
 
