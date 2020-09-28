@@ -10,7 +10,7 @@ import java.util.Set;
 public class TaskDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "Beschreibung",length=50,nullable = false)
     private String beschreibung;

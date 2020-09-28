@@ -8,7 +8,7 @@ public class TexteDAO {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "Text",length=50,nullable = false)
     private String text;

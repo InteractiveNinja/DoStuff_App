@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class KioskDAO {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "IP",length=13,nullable = false)
     private String ip;

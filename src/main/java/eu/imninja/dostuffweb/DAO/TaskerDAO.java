@@ -12,7 +12,7 @@ public class TaskerDAO {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "Name",length=45,nullable = false)
     private String name;
