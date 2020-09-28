@@ -1,5 +1,6 @@
 package eu.imninja.dostuffweb.Controller;
 
+import eu.imninja.dostuffweb.DAO.TaskDAO;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
 import eu.imninja.dostuffweb.Repository.TaskerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("tasks",taskRepository.findAll());
+
         return "home";
     }
 

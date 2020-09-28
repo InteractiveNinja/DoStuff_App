@@ -60,7 +60,7 @@
                 <thead>
                     <tr>
                         <th>Beschreibung</th>
-                        <th>Zuerledigen</th>
+                        <th>Zuerledigen bis</th>
                         <th>Erledigt</th>
                         <th>Aufgabe von</th>
                     </tr>
@@ -68,8 +68,8 @@
                 <th:block th:each="task : ${tasks}">
                     <tr>
                         <td th:text="${task.beschreibung}"></td>
-                        <td th:text="${task.zuerledigen}"></td>
-                        <td th:text="${task.erledigt}"></td>
+                        <td th:text="${#dates.format(task.zuerledigen, 'dd.MM HH:mm')}"></td>
+                        <td th:text="${task.erledigt} ? 'ja' : 'nein'"></td>
                         <td th:text="${task.tasker_id.name}"></td>
                     </tr>
                 </th:block>

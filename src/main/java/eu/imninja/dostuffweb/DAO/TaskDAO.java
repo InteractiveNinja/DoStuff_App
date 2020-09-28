@@ -84,4 +84,16 @@ public class TaskDAO {
     public void setErledigt(boolean erledigt) {
         this.erledigt = erledigt;
     }
+
+    @Override
+    public String toString() {
+        return "TaskDAO{" +
+                "id=" + id +
+                ", beschreibung='" + beschreibung + '\'' +
+                ", zuerledigen=" + zuerledigen +
+                ", tasker_id=" + tasker_id +
+                ", wiederholungen_id=" + wiederholungen_id +
+                ", erledigt=" + erledigt +
+                '}';
+    }
 }
