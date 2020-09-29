@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -15,7 +18,10 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("tasks",taskRepository.findAll());
+        model.addAttribute("tasks",taskRepository.getAllToday());
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        model.addAttribute("time",formater.format(date));
 
         return "home";
     }

@@ -14,7 +14,7 @@
 
 Features:
 * Anzeigen der aktuellen Uhrzeit :ok_hand: und das Wetter
-* Anzeigen ~~heutiger~~ aller Aufgaben :ok_hand:
+* Anzeigen ~~heutiger aller Aufgaben~~ heutiger Aufgaben :ok_hand:
 * Begrüssen des Nutzers :ok_hand:
 
 ### Planen
