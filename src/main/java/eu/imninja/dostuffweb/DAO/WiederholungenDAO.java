@@ -15,15 +15,15 @@ public class WiederholungenDAO {
     @Column(name = "Name",length=45,nullable = false)
     private String name;
     @OneToMany(mappedBy = "wiederholungen_id")
-    private Set<TaskDAO> task = new HashSet<TaskDAO>();
+    private Set<TaskDAO> task = new HashSet<>();
 
     public WiederholungenDAO() {
     }
 
-    public WiederholungenDAO(int id, String name, Set<TaskDAO> task) {
+    public WiederholungenDAO(int id, String name) {
         this.id = id;
         this.name = name;
-        this.task = task;
+
     }
 
     public int getId() {

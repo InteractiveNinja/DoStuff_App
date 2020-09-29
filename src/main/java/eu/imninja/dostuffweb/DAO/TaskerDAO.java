@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "tasker")
 public class TaskerDAO {
@@ -19,16 +20,16 @@ public class TaskerDAO {
     @Column(name = "Geburtstag",nullable = false)
     private Date geburtstag;
     @OneToMany(mappedBy = "tasker_id")
-    private Set<TaskDAO> task = new HashSet<TaskDAO>();
+    private Set<TaskDAO> task = new HashSet<>();
 
     public TaskerDAO() {
     }
 
-    public TaskerDAO(int id, String name, Date geburtstag, Set<TaskDAO> task) {
+    public TaskerDAO(int id, String name, Date geburtstag) {
         this.id = id;
         this.name = name;
         this.geburtstag = geburtstag;
-        this.task = task;
+
     }
 
     public int getId() {

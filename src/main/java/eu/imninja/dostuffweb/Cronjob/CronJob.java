@@ -35,7 +35,7 @@ public class CronJob {
         }
         System.out.println("Alle Einträge vom heutigen Tag wurden gelöscht");
     }
-    @Scheduled(cron = "*/5 * * * * *" )
+    //@Scheduled(cron = "*/5 * * * * *" )
     public void repeatTaskExtendeDaily() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatDaily();
         for(TaskDAO ta : t) {
