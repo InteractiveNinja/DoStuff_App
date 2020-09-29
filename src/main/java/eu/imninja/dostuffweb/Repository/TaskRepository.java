@@ -9,5 +9,5 @@ import java.util.Set;
 public interface TaskRepository extends CrudRepository<TaskDAO, Integer> {
 
     @Query(value = "SELECT * FROM TASK t where t.zuerledigen >= CURDATE() and t.zuerledigen < CURDATE()+1 ",nativeQuery = true)
-    Set<TaskDAO> getAllToday();
+    public Set<TaskDAO> getAllToday();
 }
