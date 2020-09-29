@@ -10,6 +10,7 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+
     <script>
         var today = new Date();
         var time = ("0" + today.getHours()).slice(-2) + ":" + ("0" + today.getMinutes()).slice(-2);
@@ -37,10 +38,10 @@
                     <a class="nav-link" href="/">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="/planen">Planen</a>
+                    <a class="nav-link" href="/planen">Planen</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/aendern">Ändern</a>
+                    <a class="nav-link" href="/aendern">Ändern</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/kiosk">Kiosk</a>
@@ -52,52 +53,38 @@
 
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4 center">Ändern</h1>
-            <p class="lead">Hier kannst du geplante Task ändern</p>
-            <h1 class="display-7 center">Alle geplanten Tasks</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Beschreibung</th>
-                        <th>Zuerledigen bis</th>
-                        <th>Erledigt</th>
-                        <th>Aufgabe von</th>
-                        <th>Ändern</th>
-                        <th>Löschen</th>
-                    </tr>
-                </thead>
-                <th:block th:each="task : ${tasks}">
-                    <tr th:style="${task.zuerledigen.before(#dates.createNow()) and !task.erledigt} ? 'color:red' : 'color:black'">
-                        <td th:text="${task.beschreibung}"></td>
-                        <td th:text="${#dates.format(task.zuerledigen, 'dd.MM HH:mm')}"></td>
-                        <td th:text="${task.erledigt} ? 'ja' : 'nein'"></td>
-                        <td th:text="${task.tasker_id.name}"></td>
-                        <td>
+            <form action="update" method="post">
+                <h1 class="display-5">ID</h1>
+                <input th:value="${task.id}" disabled type="text" name="id">
+                <h1 class="display-5">Taskname</h1>
+                <input th:value="${task.beschreibung}"  type="text" maxlength="50" name="beschreibung">
+                <h1 class="display-5">Datum</h1>
+                <input th:value="${#dates.format(task.zuerledigen, 'yyyy-MM-dd') + 'T' + #dates.format(task.zuerledigen, 'HH:mm:ss') }" type="datetime-local" name="zuerledigen">
+                <h1 class="display-5">Wiederholung</h1>
+                <select th:value="${task.wiederholungen_id}" name="wiederholungs_id">
+                    <option th:value="${wiederholung.id}"
+                            th:each="wiederholung : ${wiederholungen}"
+                            th:text="${wiederholung.name}"
+                    ></option>
+        </select>
+                <h1 class="display-5">Zuordnung</h1>
+                <select  th:value="${task.tasker_id}" name="tasker_id">
+               <option th:value="${tasker.id}"
+                       th:each="tasker : ${taskers}"
+                       th:text="${tasker.name}"
+               ></option>
 
-                            <button  th:attr="onclick=|editEntry('${task.id}')|" class="btn btn-warning">Ändern</button>
-
-                        </td>
-                        <td><button th:attr="onclick=|deleteEntry('${task.id}')|" class="btn btn-danger">Löschen</button></td>
-                    </tr>
-                </th:block>
-            </table>
-
+           </select>
+                <br>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-warning">Ändern</button>
+            </form>
         </div>
     </div>
 
 
 </body>
-
-<script>
-    function deleteEntry(id) {
-
-        location.reload();
-    }
-    function editEntry(id) {
-        location.replace("/aendernid?id="+id)
-
-    }
-</script>
 
 
 </html>
