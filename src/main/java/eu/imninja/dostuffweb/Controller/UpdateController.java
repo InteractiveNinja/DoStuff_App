@@ -8,8 +8,10 @@ import eu.imninja.dostuffweb.Repository.TaskerRepository;
 import eu.imninja.dostuffweb.Repository.WiederholungenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,5 +45,25 @@ public class UpdateController {
 
         return "update";
 
+    }
+
+    @GetMapping(value = "valuedone")
+    @ResponseBody
+    public String finishById(@RequestParam int id) {
+        TaskDAO task = taskRepository.findById(id).get();
+        task.setErledigt(true);
+        taskRepository.save(task);
+
+        return "true";
+    }
+
+    @GetMapping(value = "valuenotdone")
+    @ResponseBody
+    public String unFinishById(@RequestParam int id) {
+        TaskDAO task = taskRepository.findById(id).get();
+        task.setErledigt(false);
+        taskRepository.save(task);
+
+        return "true";
     }
 }

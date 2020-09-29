@@ -20,32 +20,42 @@ Features:
 ### Planen
 
 Features:
-* Schöneres UI
-* Hinzufügen eines Task
+* Schöneres UI :ok_hand:
+* Hinzufügen eines Task :ok_hand:
     * Beschreibung eingeben :ok_hand:
         * Begrenzung Anzeigen(0-50 Zeichen)
     * Datum Eingabe :ok_hand:
-    * Wiederholungen Dropdown
-        * Auswahl vom Dropdown mit Text
-        * Backend Text → ID 
-    * Personen Zuordnung 
-        * Auswahl mit Dropdown
-        * Backend Person → ID
-    * Speichern 
+    * Wiederholungen Dropdown :ok_hand:
+        * Auswahl vom Dropdown mit Text :ok_hand:
+        * Backend Text → ID  :ok_hand:
+    * Personen Zuordnung  :ok_hand:
+        * Auswahl mit Dropdown :ok_hand:
+        * Backend Person → ID :ok_hand:
+    * Speichern :ok_hand:
 
 
 ### Ändern
 
-* Liste aller Task mit an klickbaren Link für weiter Anpassung
-    * Jedes Element soll ein :wastebasket: Symbol beinhalten dieser soll mit einer Bestätigung verknüpft sein
-* Anklickbarer Link bringt auf eine Planung ähnlich Seite mit vor eingetragenen Werten, diese können dort angepasst werden
+* Liste aller Task ~~mit an klickbaren Link~~ Button für weiter Anpassung :ok_hand:
+    * Jedes Element soll ein :wastebasket: Symbol beinhalten dieser soll mit einer Bestätigung verknüpft sein um dann zu löschen :ok_hand:
+* Anklickbarer Link bringt auf eine Planung ähnlich Seite mit vor eingetragenen Werten, diese können dort angepasst werden :ok_hand:
 
 ### Kiosk
 
-* Liste aller Kiosks die mit dem System verbunden sind
-* Knöpfe zum Restarten, Reload des Kiosk(Rest API?)
+* Liste aller Kiosks die mit dem System verbunden sind :ok_hand:
+* Knöpfe zum ~~Restarten,~~ Reload des Kiosk(Rest API?)
+    * Logic ist Implementiert, muss nur noch umgesetzt werden auf dem Kiosk
 
 ## Backend
 
 * CronJob der jeweils um 0:00 alle Task löscht die auf heutiges Datum waren, Task die eine Wiederholung haben werden erweitert
 
+
+
+## Rest API Links
+
+[ip]:6000/valuedone?id=[id] | DB Eintrag wird auf Erledigt gesetzt
+
+[ip]:6000/valuenotdone?id=[id] | DB Eintrag wird auf nicht Erledigt gesetzt
+
+[ip]:6000/ip?ip=[ip]&hostname=[hostname] | IP wird Eingetragen in die Kiosk DB
