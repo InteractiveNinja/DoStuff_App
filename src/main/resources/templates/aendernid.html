@@ -63,19 +63,20 @@
                 <h1 class="display-5">Wiederholung</h1>
                 <select name="wiederholungs_id">
                     <option
-                            th:selected="${task.wiederholungen_id}"
-                            th:value="${wiederholung.id}"
                             th:each="wiederholung : ${wiederholungen}"
+                            th:value="${wiederholung.id}"
                             th:text="${wiederholung.name}"
+                            th:selected="${wiederholung.id == task.wiederholungen_id.id}"
                     ></option>
         </select>
                 <h1 class="display-5">Zuordnung</h1>
-                <select name="tasker_id">
-               <option
-                       th:selected="${task.tasker_id}"
+                <select name="tasker_id" id="tasker_id">
+                    <option
                        th:value="${tasker.id}"
                        th:each="tasker : ${taskers}"
                        th:text="${tasker.name}"
+                       th:selected="${tasker.id == task.tasker_id.id}"
+
                ></option>
 
            </select>
