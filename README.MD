@@ -43,12 +43,12 @@ Features:
 ### Kiosk
 
 * Liste aller Kiosks die mit dem System verbunden sind :ok_hand:
-* Knöpfe zum ~~Restarten,~~ Reload des Kiosk(Rest API?)
+* Knöpfe zum ~~Restarten,~~ Reload des Kiosk(Rest API?) :ok_hand:
     * Logic ist Implementiert, muss nur noch umgesetzt werden auf dem Kiosk
 
 ## Backend
 
-* CronJob der jeweils um 0:00 alle Task löscht die auf heutiges Datum waren, Task die eine Wiederholung haben werden erweitert
+* CronJob der jeweils um 0:00 alle Task löscht die auf heutiges Datum waren, Task die eine Wiederholung haben werden erweitert :ok_hand:
 
 
 
