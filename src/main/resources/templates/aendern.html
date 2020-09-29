@@ -62,6 +62,7 @@
                         <th>Zu erledigen bis:</th>
                         <th>Erledigt:</th>
                         <th>Aufgabe von:</th>
+                        <th>Wiederholungen:</th>
                         <th>Ändern:</th>
                         <th>Löschen:</th>
                     </tr>
@@ -72,6 +73,7 @@
                         <td th:text="${#dates.format(task.zuerledigen, 'dd.MM HH:mm')}"></td>
                         <td th:text="${task.erledigt} ? 'ja' : 'nein'"></td>
                         <td th:text="${task.tasker_id.name}"></td>
+                        <td th:text="${task.wiederholungen_id.name}"></td>
                         <td>
 
                             <button  th:attr="onclick=|editEntry('${task.id}')|" class="btn btn-warning">Ändern</button>
