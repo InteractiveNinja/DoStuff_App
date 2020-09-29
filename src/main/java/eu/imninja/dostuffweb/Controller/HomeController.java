@@ -19,10 +19,6 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("tasks",taskRepository.getAllToday());
-        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        model.addAttribute("time",formater.format(date));
-
         return "home";
     }
 

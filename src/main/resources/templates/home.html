@@ -68,10 +68,6 @@
                 <th:block th:each="task : ${tasks}">
                     <tr th:style="${task.zuerledigen.before(#dates.createNow()) and !task.erledigt} ? 'color:red' : 'color:black'">
                         <td th:text="${task.beschreibung}"></td>
-                        <!--<div th:switch="${task.zuerledigen.before(#dates.createNow())}">
-                            <span th:case="true">Case 1</span>
-                            <span th:case="false">Case 2</span>
-                        </div>-->
                         <td th:text="${#dates.format(task.zuerledigen, 'dd.MM HH:mm')}"></td>
                         <td th:text="${task.erledigt} ? 'ja' : 'nein'"></td>
                         <td th:text="${task.tasker_id.name}"></td>
