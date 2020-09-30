@@ -47,23 +47,18 @@ public class UpdateController {
 
     }
 
-    @GetMapping(value = "valuedone")
+    @GetMapping(value = "erledigt")
     @ResponseBody
     public String finishById(@RequestParam int id) {
         TaskDAO task = taskRepository.findById(id).get();
-        task.setErledigt(true);
+        if(task.isErledigt()) {
+            task.setErledigt(false);
+        } else {
+            task.setErledigt(true);
+        }
+
         taskRepository.save(task);
 
-        return "true";
-    }
-
-    @GetMapping(value = "valuenotdone")
-    @ResponseBody
-    public String unFinishById(@RequestParam int id) {
-        TaskDAO task = taskRepository.findById(id).get();
-        task.setErledigt(false);
-        taskRepository.save(task);
-
-        return "true";
+        return "task auf " + task.isErledigt() + " gesetzt" ;
     }
 }
