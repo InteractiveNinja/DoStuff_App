@@ -2,6 +2,7 @@ package eu.imninja.dostuffweb.Cronjob;
 
 
 import eu.imninja.dostuffweb.DAO.TaskDAO;
+import eu.imninja.dostuffweb.Logger.LoggerController;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,28 +19,31 @@ public class CronJob {
 
 
     TaskRepository taskRepository;
+    LoggerController loggerController;
 
-
-
-
-    public CronJob(TaskRepository taskRepository) {
+    public CronJob(TaskRepository taskRepository, LoggerController loggerController) {
         this.taskRepository = taskRepository;
+        this.loggerController = loggerController;
     }
+
     //Löscht alle Task die ohne Wiederholung markiert sind.
     @Scheduled(cron = "${cronjob.time}")
     public void repeatTaskDelete() {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatNever();
+        int i = 0;
         for(TaskDAO ta : t) {
             taskRepository.deleteById(ta.getId());
+            i++;
         }
 
-        System.out.println("Tägliche Einträge wurde gelöscht");
+        loggerController.logInfo("Tägliche Einträge wurden gelöscht, insgesamt=" + i);
 
     }
     @Scheduled(cron = "${cronjob.time}")
     //Task mit der wiederholung Täglich werden hier um ein Tag verlängert und auf nicht erledigt gesetzt
     public void repeatTaskExtendeDaily() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatDaily();
+        int i = 0;
         for(TaskDAO ta : t) {
 
             Date olddate = ta.getZuerledigen();
@@ -51,17 +55,15 @@ public class CronJob {
             ta.setErledigt(false);
 
             taskRepository.save(ta);
-            System.out.println("Tägliche Einträge wurden gelöscht");
-
-
-
-
+            i++;
         }
+        loggerController.logInfo("Tägliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
     }
     //Task mit der wiederholung Wöchentlich werden hier um eine Woche verlängert und auf nicht erledigt gesetzt
     @Scheduled(cron = "${cronjob.time}")
     public void repeatTaskExtendeWeekly() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatWeekly();
+        int i = 0;
         for(TaskDAO ta : t) {
 
             Date olddate = ta.getZuerledigen();
@@ -73,11 +75,12 @@ public class CronJob {
             ta.setErledigt(false);
 
             taskRepository.save(ta);
+            i++;
 
-
-            System.out.println("Wöchentliche Einträge wurde gelöscht");
 
         }
+        loggerController.logInfo("Wöchentliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
+
 
     }
 
