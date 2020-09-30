@@ -54,8 +54,12 @@ Features:
 
 ## Rest API Links
 
-[ip]:6000/valuedone?id=[id] | DB Eintrag wird auf Erledigt gesetzt
+[ip]:12000/valuedone?id=[id] | DB Eintrag wird auf Erledigt gesetzt
 
-[ip]:6000/valuenotdone?id=[id] | DB Eintrag wird auf nicht Erledigt gesetzt
+[ip]:12000/valuenotdone?id=[id] | DB Eintrag wird auf nicht Erledigt gesetzt
 
-[ip]:6000/ip?ip=[ip]&hostname=[hostname] | IP wird Eingetragen in die Kiosk DB
+[ip]:12000/ip?ip=[ip]&hostname=[hostname] | IP wird Eingetragen in die Kiosk DB
+
+## Kiosk Rest API Links
+
+[ip]:12500/?reload | Force Reloaden der Kiosk Einträge

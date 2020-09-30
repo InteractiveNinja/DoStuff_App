@@ -83,7 +83,7 @@
 
     function reloadKiosk(hostname,ip) {
         if(confirm("Möchtest du Kiosk: " + hostname + " reloaden?")){
-            $.post("http://"+ip+":6500/?reload",(data) =>{
+            $.post("http://"+ip+":12500/?reload",(data) =>{
                 console.log(data)
             })
         }
