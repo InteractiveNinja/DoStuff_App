@@ -5,6 +5,7 @@ import eu.imninja.dostuffweb.DAO.SingleTaskDAO;
 import eu.imninja.dostuffweb.DAO.TaskDAO;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;

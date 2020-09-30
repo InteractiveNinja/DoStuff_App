@@ -7,15 +7,19 @@ public class SingleTaskDAO {
     private String beschreibung;
     private Date zuerledigen;
     private String tasker_name;
-    private String widerholungs_name;
+    private String wiederholungs_name;
     private boolean erledigt;
 
-    public SingleTaskDAO(int id, String beschreibung, Date zuerledigen, String tasker_name, String widerholungs_name, boolean erledigt) {
+
+    public SingleTaskDAO() {
+    }
+
+    public SingleTaskDAO(int id, String beschreibung, Date zuerledigen, String tasker_name, String wiederholungs_name, boolean erledigt) {
         this.id = id;
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
         this.tasker_name = tasker_name;
-        this.widerholungs_name = widerholungs_name;
+        this.wiederholungs_name = wiederholungs_name;
         this.erledigt = erledigt;
     }
 
@@ -51,12 +55,12 @@ public class SingleTaskDAO {
         this.tasker_name = tasker_name;
     }
 
-    public String getWiderholungs_name() {
-        return widerholungs_name;
+    public String getWiederholungs_name() {
+        return wiederholungs_name;
     }
 
-    public void setWiderholungs_name(String widerholungs_name) {
-        this.widerholungs_name = widerholungs_name;
+    public void setWiederholungs_name(String wiederholungs_name) {
+        this.wiederholungs_name = wiederholungs_name;
     }
 
     public boolean isErledigt() {
@@ -74,7 +78,7 @@ public class SingleTaskDAO {
                 ", beschreibung='" + beschreibung + '\'' +
                 ", zuerledigen=" + zuerledigen +
                 ", tasker_name='" + tasker_name + '\'' +
-                ", widerholungs_name='" + widerholungs_name + '\'' +
+                ", wiederholungs_name='" + wiederholungs_name + '\'' +
                 ", erledigt=" + erledigt +
                 '}';
     }
