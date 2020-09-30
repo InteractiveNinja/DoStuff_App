@@ -3,6 +3,7 @@ package eu.imninja.dostuffweb.Cronjob;
 
 import eu.imninja.dostuffweb.DAO.TaskDAO;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +19,14 @@ public class CronJob {
 
     TaskRepository taskRepository;
 
+
+
+
     public CronJob(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
     //Löscht alle Task die ohne Wiederholung markiert sind.
-    @Scheduled(cron = "59 23 * * * *" )
+    @Scheduled(cron = "${cronjob.time}")
     public void repeatTaskDelete() {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatNever();
         for(TaskDAO ta : t) {
@@ -32,9 +36,8 @@ public class CronJob {
         System.out.println("Tägliche Einträge wurde gelöscht");
 
     }
-    @Scheduled(cron = "59 23 * * * *" )
+    @Scheduled(cron = "${cronjob.time}")
     //Task mit der wiederholung Täglich werden hier um ein Tag verlängert und auf nicht erledigt gesetzt
-    //@Scheduled(cron = "*/5 * * * * *" )
     public void repeatTaskExtendeDaily() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatDaily();
         for(TaskDAO ta : t) {
@@ -56,7 +59,7 @@ public class CronJob {
         }
     }
     //Task mit der wiederholung Wöchentlich werden hier um eine Woche verlängert und auf nicht erledigt gesetzt
-    @Scheduled(cron = "59 23 * * * *" )
+    @Scheduled(cron = "${cronjob.time}")
     public void repeatTaskExtendeWeekly() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatWeekly();
         for(TaskDAO ta : t) {
