@@ -29,6 +29,8 @@ public class CronJob {
             taskRepository.deleteById(ta.getId());
         }
 
+        System.out.println("Tägliche Einträge wurde gelöscht");
+
     }
     @Scheduled(cron = "59 23 * * * *" )
     //Task mit der wiederholung Täglich werden hier um ein Tag verlängert und auf nicht erledigt gesetzt
@@ -46,7 +48,7 @@ public class CronJob {
             ta.setErledigt(false);
 
             taskRepository.save(ta);
-
+            System.out.println("Tägliche Einträge wurden gelöscht");
 
 
 
@@ -70,7 +72,7 @@ public class CronJob {
             taskRepository.save(ta);
 
 
-
+            System.out.println("Wöchentliche Einträge wurde gelöscht");
 
         }
 
