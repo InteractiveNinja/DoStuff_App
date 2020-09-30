@@ -22,7 +22,7 @@ public class CronJob {
         this.taskRepository = taskRepository;
     }
     //Löscht alle Task die ohne Wiederholung markiert sind.
-    @Scheduled(cron = "59 23 * * *" )
+    @Scheduled(cron = "59 23 * * * *" )
     public void repeatTaskDelete() {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatNever();
         for(TaskDAO ta : t) {
@@ -30,7 +30,7 @@ public class CronJob {
         }
 
     }
-    @Scheduled(cron = "59 23 * * *" )
+    @Scheduled(cron = "59 23 * * * *" )
     //Task mit der wiederholung Täglich werden hier um ein Tag verlängert und auf nicht erledigt gesetzt
     //@Scheduled(cron = "*/5 * * * * *" )
     public void repeatTaskExtendeDaily() throws ParseException {
@@ -54,7 +54,7 @@ public class CronJob {
         }
     }
     //Task mit der wiederholung Wöchentlich werden hier um eine Woche verlängert und auf nicht erledigt gesetzt
-    @Scheduled(cron = "59 23 * * *" )
+    @Scheduled(cron = "59 23 * * * *" )
     public void repeatTaskExtendeWeekly() throws ParseException {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatWeekly();
         for(TaskDAO ta : t) {
