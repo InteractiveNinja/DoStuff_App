@@ -28,8 +28,15 @@ public class TaskDAO {
     public TaskDAO() {
     }
 
-    public TaskDAO(int id, String beschreibung, Date zuerledigen, TaskerDAO tasker_id, WiederholungenDAO wiederholungen_id, boolean erledigt) {
+    public TaskDAO(int id,String beschreibung, Date zuerledigen, TaskerDAO tasker_id, WiederholungenDAO wiederholungen_id, boolean erledigt) {
         this.id = id;
+        this.beschreibung = beschreibung;
+        this.zuerledigen = zuerledigen;
+        this.tasker_id = tasker_id;
+        this.wiederholungen_id = wiederholungen_id;
+        this.erledigt = erledigt;
+    }
+    public TaskDAO(String beschreibung,boolean erledigt,Date zuerledigen,TaskerDAO tasker_id,WiederholungenDAO wiederholungen_id) {
         this.beschreibung = beschreibung;
         this.zuerledigen = zuerledigen;
         this.tasker_id = tasker_id;

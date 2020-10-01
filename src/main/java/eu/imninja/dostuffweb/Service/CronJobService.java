@@ -3,6 +3,7 @@ package eu.imninja.dostuffweb.Service;
 
 import eu.imninja.dostuffweb.DAO.ArchiveDAO;
 import eu.imninja.dostuffweb.DAO.TaskDAO;
+import eu.imninja.dostuffweb.DateFormatter.DateFormatter;
 import eu.imninja.dostuffweb.Repository.ArchiveRepository;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -21,11 +22,13 @@ public class CronJobService {
     TaskRepository taskRepository;
     LoggerControllerService loggerControllerService;
     ArchiveRepository archiveRepository;
+    DateFormatter dateFormatter;
 
-    public CronJobService(TaskRepository taskRepository, LoggerControllerService loggerControllerService, ArchiveRepository archiveRepository) {
+    public CronJobService(TaskRepository taskRepository, LoggerControllerService loggerControllerService, ArchiveRepository archiveRepository, DateFormatter dateFormatter) {
         this.taskRepository = taskRepository;
         this.loggerControllerService = loggerControllerService;
         this.archiveRepository = archiveRepository;
+        this.dateFormatter = dateFormatter;
     }
 
     //Löscht alle Task die ohne Wiederholung markiert sind.
@@ -48,15 +51,8 @@ public class CronJobService {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatDaily();
         int i = 0;
         for(TaskDAO ta : t) {
-
-            Date olddate = ta.getZuerledigen();
-            String timestring = olddate.toString().substring(10,olddate.toString().length());
-
-            LocalDate nextWeek = LocalDate.now().plusDays(1);
-            Date newdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(nextWeek.toString() + " " + timestring);
-            ta.setZuerledigen(newdate);
+            ta.setZuerledigen(dateFormatter.formatDateWithShift(ta.getZuerledigen().toString(),1));
             ta.setErledigt(false);
-
             taskRepository.save(ta);
             i++;
         }
@@ -68,15 +64,8 @@ public class CronJobService {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatWeekly();
         int i = 0;
         for(TaskDAO ta : t) {
-
-            Date olddate = ta.getZuerledigen();
-            String timestring = olddate.toString().substring(10,olddate.toString().length());
-
-            LocalDate nextWeek = LocalDate.now().plusDays(7);
-            Date newdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(nextWeek.toString() + " " + timestring);
-            ta.setZuerledigen(newdate);
+            ta.setZuerledigen(dateFormatter.formatDateWithShift(ta.getZuerledigen().toString(),7));
             ta.setErledigt(false);
-
             taskRepository.save(ta);
             i++;
 
