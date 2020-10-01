@@ -13,8 +13,12 @@ import java.util.Date;
 
 @Controller
 public class HomeController {
-    @Autowired
+
     TaskRepository taskRepository;
+
+    public HomeController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @GetMapping("/")
     public String home(Model model) {

@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AendernController {
 
-    @Autowired
     TaskRepository taskRepository;
+
+    public AendernController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @GetMapping("/aendern")
     public String aendern(Model model) {

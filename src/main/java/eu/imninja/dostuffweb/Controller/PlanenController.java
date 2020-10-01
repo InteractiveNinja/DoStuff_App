@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PlanenController {
 
-    @Autowired
     TaskerRepository taskerRepository;
-    @Autowired
     WiederholungenRepository wiederholungenRepository;
+
+    public PlanenController(TaskerRepository taskerRepository, WiederholungenRepository wiederholungenRepository) {
+        this.taskerRepository = taskerRepository;
+        this.wiederholungenRepository = wiederholungenRepository;
+    }
 
     @GetMapping("/planen")
     public String planen(Model model) {
