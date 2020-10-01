@@ -1,12 +1,10 @@
-package eu.imninja.dostuffweb.Cronjob;
+package eu.imninja.dostuffweb.Service;
 
 
 import eu.imninja.dostuffweb.DAO.TaskDAO;
-import eu.imninja.dostuffweb.Logger.LoggerController;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,16 +12,16 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
-@Component
-public class CronJob {
+@Service
+public class CronJobService {
 
 
     TaskRepository taskRepository;
-    LoggerController loggerController;
+    LoggerControllerService loggerControllerService;
 
-    public CronJob(TaskRepository taskRepository, LoggerController loggerController) {
+    public CronJobService(TaskRepository taskRepository, LoggerControllerService loggerControllerService) {
         this.taskRepository = taskRepository;
-        this.loggerController = loggerController;
+        this.loggerControllerService = loggerControllerService;
     }
 
     //Löscht alle Task die ohne Wiederholung markiert sind.
@@ -36,7 +34,7 @@ public class CronJob {
             i++;
         }
 
-        loggerController.logInfo("Tägliche Einträge wurden gelöscht, insgesamt=" + i);
+        loggerControllerService.logInfo("Tägliche Einträge wurden gelöscht, insgesamt=" + i);
 
     }
     @Scheduled(cron = "${cronjob.time}")
@@ -57,7 +55,7 @@ public class CronJob {
             taskRepository.save(ta);
             i++;
         }
-        loggerController.logInfo("Tägliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
+        loggerControllerService.logInfo("Tägliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
     }
     //Task mit der wiederholung Wöchentlich werden hier um eine Woche verlängert und auf nicht erledigt gesetzt
     @Scheduled(cron = "${cronjob.time}")
@@ -79,7 +77,7 @@ public class CronJob {
 
 
         }
-        loggerController.logInfo("Wöchentliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
+        loggerControllerService.logInfo("Wöchentliche Wiederholungseinträge wurden verlängert, insgesamt=" + i);
 
 
     }
