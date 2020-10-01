@@ -4,6 +4,7 @@ import eu.imninja.dostuffweb.DAO.TaskerDAO;
 import eu.imninja.dostuffweb.DAO.WiederholungenDAO;
 import eu.imninja.dostuffweb.Repository.TaskerRepository;
 import eu.imninja.dostuffweb.Repository.WiederholungenRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import sun.java2d.pipe.SpanShapeRenderer;
@@ -22,6 +23,9 @@ public class BootStrapData implements CommandLineRunner {
         this.taskerRepository = taskerRepository;
     }
 
+    @Value("${im.ninja}")
+    private boolean isNinja;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -32,6 +36,9 @@ public class BootStrapData implements CommandLineRunner {
         wiederholungenRepository.save(ww);
         wiederholungenRepository.save(www);
 
+        if(isNinja) {
+
+
         TaskerDAO t = new TaskerDAO(1,"Gabriel",new SimpleDateFormat("yyyy-MM-dd").parse("2003-09-03"));
         TaskerDAO tt = new TaskerDAO(2,"Melody",new SimpleDateFormat("yyyy-MM-dd").parse("2007-11-16"));
         TaskerDAO ttt = new TaskerDAO(3,"Bodo",new SimpleDateFormat("yyyy-MM-dd").parse("1967-01-01"));
@@ -41,6 +48,7 @@ public class BootStrapData implements CommandLineRunner {
         taskerRepository.save(tt);
         taskerRepository.save(ttt);
         taskerRepository.save(tttt);
+        }
 
     }
 }
