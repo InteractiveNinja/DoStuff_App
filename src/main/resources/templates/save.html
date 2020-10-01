@@ -11,7 +11,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script th:src="@{/js/timescript.js}"></script>
+    <script src="https://cdn.rawgit.com/blowsie/Pure-JavaScript-HTML5-Parser/master/htmlparser.js"></script>
     <script th:src="@{/js/html2json.js}"></script>
+    <script th:src="@{/js/weather.js}"></script>
     <link rel="shortcut icon" th:href="@{/fav/favicon.ico}" type="image/x-icon">
 </head>
 
@@ -36,7 +38,7 @@
             </ul>
         </div>
         <span class="navbar-text" style="padding-right: 1%;" id="time"></span>
-        <span class="navbar-text" th:text="${wetter}"></span>
+        <span class="navbar-text" id="wetter"></span>
     </nav>
 
     <div class="jumbotron jumbotron-fluid">
