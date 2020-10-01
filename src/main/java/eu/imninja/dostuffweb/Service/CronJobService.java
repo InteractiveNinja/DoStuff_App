@@ -1,7 +1,9 @@
 package eu.imninja.dostuffweb.Service;
 
 
+import eu.imninja.dostuffweb.DAO.ArchiveDAO;
 import eu.imninja.dostuffweb.DAO.TaskDAO;
+import eu.imninja.dostuffweb.Repository.ArchiveRepository;
 import eu.imninja.dostuffweb.Repository.TaskRepository;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,12 @@ public class CronJobService {
 
     TaskRepository taskRepository;
     LoggerControllerService loggerControllerService;
+    ArchiveRepository archiveRepository;
 
-    public CronJobService(TaskRepository taskRepository, LoggerControllerService loggerControllerService) {
+    public CronJobService(TaskRepository taskRepository, LoggerControllerService loggerControllerService, ArchiveRepository archiveRepository) {
         this.taskRepository = taskRepository;
         this.loggerControllerService = loggerControllerService;
+        this.archiveRepository = archiveRepository;
     }
 
     //Löscht alle Task die ohne Wiederholung markiert sind.
@@ -30,6 +34,7 @@ public class CronJobService {
         Set<TaskDAO> t = taskRepository.getAllWithRepeatNever();
         int i = 0;
         for(TaskDAO ta : t) {
+            archiveRepository.save(new ArchiveDAO(ta.getBeschreibung(),ta.getZuerledigen(),ta.getTasker_id().getName(),ta.isErledigt()));
             taskRepository.deleteById(ta.getId());
             i++;
         }
