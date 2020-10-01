@@ -14,7 +14,7 @@
 
 Features:
 * Anzeigen der aktuellen Uhrzeit :ok_hand: und das Wetter
-* Anzeigen ~~heutiger aller Aufgaben~~ heutiger Aufgaben :ok_hand:
+* Anzeigen heutiger Aufgaben :ok_hand:
 * Begrüssen des Nutzers :ok_hand:
 
 ### Planen
@@ -48,8 +48,9 @@ Features:
 
 ## Backend
 
-* CronJob der jeweils um 0:00 alle Task löscht die auf heutiges Datum waren, Task die eine Wiederholung haben werden erweitert :ok_hand:
-
+* CronJob der jeweils um 23:59 alle Task löscht die auf heutiges Datum waren, Task die eine Wiederholung haben werden erweitert :ok_hand:
+* Task die länger als den heutigen Tag in vergangenheit liegen werden gelöscht.
+* Task die gelöscht werden, werden archiviert.
 
 
 ## Rest API Links
