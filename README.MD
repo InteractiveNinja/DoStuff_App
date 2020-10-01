@@ -40,11 +40,11 @@ Features:
     * Jedes Element soll ein :wastebasket: Symbol beinhalten dieser soll mit einer Bestätigung verknüpft sein um dann zu löschen :ok_hand:
 * Anklickbarer Link bringt auf eine Planung ähnlich Seite mit vor eingetragenen Werten, diese können dort angepasst werden :ok_hand:
 
-### Kiosk
+### ~~Kiosk~~
 
-* Liste aller Kiosks die mit dem System verbunden sind :ok_hand:
-* Knöpfe zum ~~Restarten,~~ Reload des Kiosk(Rest API?) :ok_hand:
-    * Logic ist Implementiert, muss nur noch umgesetzt werden auf dem Kiosk
+* ~~Liste aller Kiosks die mit dem System verbunden sind :ok_hand:~~
+* ~~Knöpfe zum Restarten, Reload des Kiosk(Rest API?) :ok_hand:~~
+    * ~~Logic ist Implementiert, muss nur noch umgesetzt werden auf dem Kiosk~~
 
 ## Backend
 
@@ -56,7 +56,7 @@ Features:
 
 [ip]:12000/erledigt?id=[id] | DB Eintrag wird auf Erledigt oder Unerledigt gesetzt gesetzt
 
-[ip]:12000/ip?ip=[ip]&hostname=[hostname] | IP wird Eingetragen in die Kiosk DB
+[ip]~~:12000/ip?ip=[ip]&hostname=[hostname] | IP wird Eingetragen in die Kiosk DB~~
 
 ## ~~Kiosk Rest API Links~~
 
