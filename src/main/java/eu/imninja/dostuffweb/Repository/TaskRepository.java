@@ -23,4 +23,7 @@ public interface TaskRepository extends CrudRepository<TaskDAO, Integer> {
     @Query(value = "SELECT * FROM task t where t.zuerledigen >= CURDATE() and  t.zuerledigen < CURDATE()+1 and t.wiederholungen_id = 3",nativeQuery = true)
     public Set<TaskDAO> getAllWithRepeatWeekly();
 
+    @Query(value = "SELECT * FROM task t where t.zuerledigen < CURDATE()",nativeQuery = true)
+    public Set<TaskDAO> getAllFromYesterday();
+
 }

@@ -76,4 +76,18 @@ public class CronJobService {
 
     }
 
+    @Scheduled(cron = "${cronjob.time}")
+    public void deleteUnknownOldTasks() {
+        Set<TaskDAO> t = taskRepository.getAllFromYesterday();
+        int i = 0;
+        for(TaskDAO ta : t) {
+            archiveRepository.save(new ArchiveDAO(ta.getBeschreibung(),ta.getZuerledigen(),ta.getTasker_id().getName(),ta.isErledigt()));
+            taskRepository.deleteById(ta.getId());
+            i++;
+        }
+
+        loggerControllerService.logInfo("Es wurden Einträge gelöscht die in der Vergangenheit liegen, insgesamt=" + i);
+
+    }
+
 }
