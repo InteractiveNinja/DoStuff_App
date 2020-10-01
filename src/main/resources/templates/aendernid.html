@@ -47,11 +47,11 @@
                 <h1 class="display-5">ID</h1>
                 <input th:value="${task.id}" readonly type="text" name="id">
                 <h1 class="display-5">Taskname</h1>
-                <input th:value="${task.beschreibung}" type="text" maxlength="50" name="beschreibung">
+                <input th:value="${task.beschreibung}" required type="text" maxlength="50" name="beschreibung">
                 <h1 class="display-5">Datum</h1>
-                <input th:value="${#dates.format(task.zuerledigen, 'yyyy-MM-dd') + 'T' + #dates.format(task.zuerledigen, 'HH:mm:ss') }" type="datetime-local" name="zuerledigen">
+                <input required th:value="${#dates.format(task.zuerledigen, 'yyyy-MM-dd') + 'T' + #dates.format(task.zuerledigen, 'HH:mm:ss') }" type="datetime-local" name="zuerledigen">
                 <h1 class="display-5">Wiederholung</h1>
-                <select name="wiederholungs_id">
+                <select required name="wiederholungs_id">
                     <option
                             th:each="wiederholung : ${wiederholungen}"
                             th:value="${wiederholung.id}"
@@ -60,7 +60,7 @@
                     ></option>
         </select>
                 <h1 class="display-5">Zuordnung</h1>
-                <select name="tasker_id" id="tasker_id">
+                <select required name="tasker_id" id="tasker_id">
                     <option
                        th:value="${tasker.id}"
                        th:each="tasker : ${taskers}"

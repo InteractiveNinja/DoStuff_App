@@ -45,18 +45,18 @@
         <div class="container">
             <form action="save" method="post">
                 <h1 class="display-5">Taskname</h1>
-                <input type="text" maxlength="50" name="beschreibung">
+                <input type="text" required maxlength="50" name="beschreibung">
                 <h1 class="display-5">Datum</h1>
-                <input type="datetime-local" name="zuerledigen">
+                <input type="datetime-local" required name="zuerledigen">
                 <h1 class="display-5">Wiederholung</h1>
-                <select name="wiederholungs_id">
+                <select name="wiederholungs_id" required>
                     <option th:value="${wiederholung.id}"
                             th:each="wiederholung : ${wiederholungen}"
                             th:text="${wiederholung.name}"
                     ></option>
         </select>
                 <h1 class="display-5">Zuordnung</h1>
-                <select name="tasker_id">
+                <select name="tasker_id" required>
                <option th:value="${tasker.id}"
                        th:each="tasker : ${taskers}"
                        th:text="${tasker.name}"
