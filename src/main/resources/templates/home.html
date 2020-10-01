@@ -10,18 +10,7 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script>
-        var today = new Date();
-        var time = ("0" + today.getHours()).slice(-2) + ":" + ("0" + today.getMinutes()).slice(-2);
-        $("#greeting").text(`${time}`)
-        tody = null;
-        setInterval(() => {
-            var today = new Date();
-            var time = ("0" + today.getHours()).slice(-2) + ":" + ("0" + today.getMinutes()).slice(-2);
-            $("#time").text(`${time}`)
-            tody = null;
-        }, 1000);
-    </script>
+    <script src="js/timescript.js"></script>
 </head>
 
 <body>
@@ -29,26 +18,23 @@
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">DoStuff WebApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="/">Home</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/planen">Planen</a>
+                    <a class="nav-link " href="/planen">Planen</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/aendern">Ändern</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/kiosk">Kiosk</a>
+                    <a class="nav-link active" href="/aendern">Ändern</a>
                 </li>
             </ul>
-
         </div>
-        <span class="navbar-text" id="time"></span>
+        <span class="navbar-text" style="padding-right: 1%;" id="time"></span>
+        <span class="navbar-text" th:text="${wetter}"></span>
     </nav>
 
     <div class="jumbotron jumbotron-fluid">
