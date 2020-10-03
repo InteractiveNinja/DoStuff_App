@@ -20,7 +20,7 @@ public class DateFormatter {
 
         String timestring = date.toString().substring(10,date.length());
 
-        LocalDate nextWeek = LocalDate.now().plusDays(1);
+        LocalDate nextWeek = LocalDate.now().plusDays(days);
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(nextWeek.toString() + " " + timestring);
 
     }
