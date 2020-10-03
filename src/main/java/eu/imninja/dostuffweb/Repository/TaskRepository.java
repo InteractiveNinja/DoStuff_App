@@ -30,8 +30,8 @@ public interface TaskRepository extends CrudRepository<TaskDAO, Integer> {
     @Query(value = "SELECT * FROM task t where t.zuerledigen < CURDATE()",nativeQuery = true)
     public Set<TaskDAO> getAllFromYesterday();
 
-    // Hole alle und Ordne diese per Wiederholungsid
-    @Query(value = "SELECT * FROM task t order by t.wiederholungen_id",nativeQuery = true)
+    // Hole alle und Ordne diese per Wiederholungs_id und ob es erledigt ist
+    @Query(value = "SELECT * FROM task t order by t.wiederholungen_id,t.erledigt",nativeQuery = true)
     public Set<TaskDAO> getAllOrderByRepeater();
 
 }
