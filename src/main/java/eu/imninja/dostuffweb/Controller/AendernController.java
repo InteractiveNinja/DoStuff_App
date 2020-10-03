@@ -17,7 +17,7 @@ public class AendernController {
 
     @GetMapping("/aendern")
     public String aendern(Model model) {
-        model.addAttribute("tasks",taskRepository.findAll());
+        model.addAttribute("tasks",taskRepository.getAllOrderByRepeater());
         return "aendern";
     }
 
