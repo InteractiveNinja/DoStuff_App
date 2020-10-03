@@ -43,11 +43,13 @@ public class BootStrapData implements CommandLineRunner {
         TaskerDAO tt = new TaskerDAO(2,"Melody",new SimpleDateFormat("yyyy-MM-dd").parse("2007-11-16"));
         TaskerDAO ttt = new TaskerDAO(3,"Bodo",new SimpleDateFormat("yyyy-MM-dd").parse("1967-01-01"));
         TaskerDAO tttt = new TaskerDAO(4,"Cleo",new SimpleDateFormat("yyyy-MM-dd").parse("1975-06-05"));
+        TaskerDAO ttttt = new TaskerDAO(5,"alle",new SimpleDateFormat("yyyy-MM-dd").parse("2020-01-01"));
 
         taskerRepository.save(t);
         taskerRepository.save(tt);
         taskerRepository.save(ttt);
         taskerRepository.save(tttt);
+        taskerRepository.save(ttttt);
         }
 
     }
